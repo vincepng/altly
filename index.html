@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ALTLY | Automated Systems for Real Estate Professionals</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            200: '#bae6fd',
+                            300: '#7dd3fc',
+                            400: '#38bdf8',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            700: '#0369a1',
+                            800: '#075985',
+                            900: '#0c4a6e',
+                        },
+                        secondary: {
+                            50: '#ecfdf5',
+                            100: '#d1fae5',
+                            200: '#a7f3d0',
+                            300: '#6ee7b7',
+                            400: '#34d399',
+                            500: '#10b981',
+                            600: '#059669',
+                            700: '#047857',
+                            800: '#065f46',
+                            900: '#064e3b',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .hero-gradient {
+            background: linear-gradient(135deg, rgba(224,242,254,0.8) 0%, rgba(209,250,229,0.6) 100%);
+        }
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+        .faq-item {
+            border-bottom: 1px solid #e5e7eb;
+        }
+        .faq-question {
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .faq-question:hover {
+            color: #0ea5e9;
+        }
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+        .faq-answer.active {
+            max-height: 300px;
+        }
+        .testimonial-card {
+            background: linear-gradient(145deg, #ffffff 0%, #f9fafb 100%);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 font-sans antialiased text-gray-800">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0 flex items-center">
+                        <svg class="h-8 w-8 text-primary-600" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 1L3 5v12l9 4 9-4V5l-9-4z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M3 5l9 4 9-4M12 17V5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        <span class="ml-2 text-xl font-bold text-gray-900">ALTLY</span>
+                    </div>
+                </div>
+                <div class="hidden md:ml-6 md:flex md:items-center md:space-x-8">
+                    <a href="#features" class="text-gray-900 hover:text-primary-600 px-3 py-2 text-sm font-medium">Features</a>
+                    <a href="#testimonials" class="text-gray-900 hover:text-primary-600 px-3 py-2 text-sm font-medium">Testimonials</a>
+                    <a href="#pricing" class="text-gray-900 hover:text-primary-600 px-3 py-2 text-sm font-medium">Pricing</a>
+                    <a href="#faq" class="text-gray-900 hover:text-primary-600 px-3 py-2 text-sm font-medium">FAQ</a>
+                    <a href="#contact" class="bg-primary-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-primary-700 transition">Get Started</a>
+                </div>
+                <div class="-mr-2 flex items-center md:hidden">
+                    <button type="button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none" aria-controls="mobile-menu" aria-expanded="false" id="mobile-menu-button">
+                        <span class="sr-only">Open main menu</span>
+                        <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile menu -->
+        <div class="hidden md:hidden" id="mobile-menu">
+            <div class="pt-2 pb-3 space-y-1">
+                <a href="#features" class="bg-primary-50 border-primary-500 text-primary-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Features</a>
+                <a href="#testimonials" class="border-transparent text-gray-600 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-800 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Testimonials</a>
+                <a href="#pricing" class="border-transparent text-gray-600 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-800 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Pricing</a>
+                <a href="#faq" class="border-transparent text-gray-600 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-800 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">FAQ</a>
+                <a href="#contact" class="bg-primary-600 text-white block px-4 py-2 rounded-md text-base font-medium hover:bg-primary-700 transition mx-3 my-2">Get Started</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="hero-gradient">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-28">
+            <div class="text-center">
+                <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Automate Your Real Estate Business</h1>
+                <p class="text-xl md:text-2xl text-gray-700 max-w-3xl mx-auto mb-8">AI-powered tools to streamline lead management, client communication, and property marketing so you can focus on closing deals.</p>
+                <div class="flex flex-col sm:flex-row justify-center gap-4">
+                    <a href="#contact" class="bg-primary-600 hover:bg-primary-700 text-white font-medium py-3 px-8 rounded-md transition duration-300">Start Free Trial</a>
+                    <a href="#features" class="bg-white hover:bg-gray-50 text-gray-800 font-medium py-3 px-8 rounded-md border border-gray-300 transition duration-300">See How It Works</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Logo Cloud -->
+    <div class="bg-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <p class="text-center text-sm font-semibold uppercase text-gray-500 tracking-wider mb-8">Trusted by top real estate professionals</p>
+            <div class="grid grid-cols-2 gap-8 md:grid-cols-6 lg:grid-cols-5">
+                <div class="col-span-1 flex justify-center">
+                    <img class="h-12" src="https://tailwindui.com/img/logos/tuple-logo-gray-400.svg" alt="Tuple">
+                </div>
+                <div class="col-span-1 flex justify-center">
+                    <img class="h-12" src="https://tailwindui.com/img/logos/mirage-logo-gray-400.svg" alt="Mirage">
+                </div>
+                <div class="col-span-1 flex justify-center">
+                    <img class="h-12" src="https://tailwindui.com/img/logos/statickit-logo-gray-400.svg" alt="StaticKit">
+                </div>
+                <div class="col-span-1 flex justify-center">
+                    <img class="h-12" src="https://tailwindui.com/img/logos/transistor-logo-gray-400.svg" alt="Transistor">
+                </div>
+                <div class="col-span-1 flex justify-center">
+                    <img class="h-12" src="https://tailwindui.com/img/logos/workcation-logo-gray-400.svg" alt="Workcation">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Features Section -->
+    <div id="features" class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Powerful Tools for Modern Realtors</h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">Everything you need to automate your workflow, nurture leads, and grow your business.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Feature 1 -->
+                <div class="bg-white p-6 rounded-lg shadow-sm card-hover">
+                    <div class="w-12 h-12 bg-primary-50 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-robot text-primary-600 text-xl"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-2">AI-Powered Lead Nurturing</h3>
+                    <p class="text-gray-600">Automatically follow up with leads based on their behavior and engagement, increasing conversion rates by up to 300%.</p>
+                </div>
+                
+                <!-- Feature 2 -->
+                <div class="bg-white p-6 rounded-lg shadow-sm card-hover">
+                    <div class="w-12 h-12 bg-primary-50 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-home text-primary-600 text-xl"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-2">Smart Property Matching</h3>
+                    <p class="text-gray-600">Our algorithm learns client preferences and instantly matches them with perfect properties, saving you hours of manual searching.</p>
+                </div>
+                
+                <!-- Feature 3 -->
+                <div class="bg-white p-6 rounded-lg shadow-sm card-hover">
+                    <div class="w-12 h-12 bg-primary-50 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-calendar-check text-primary-600 text-xl"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-2">Automated Scheduling</h3>
+                    <p class="text-gray-600">Clients can book showings directly on your calendar, with automatic reminders and follow-ups built in.</p>
+                </div>
+                
+                <!-- Feature 4 -->
+                <div class="bg-white p-6 rounded-lg shadow-sm card-hover">
+                    <div class="w-12 h-12 bg-primary-50 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-envelope-open-text text-primary-600 text-xl"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-2">Personalized Campaigns</h3>
+                    <p class="text-gray-600">Create hyper-targeted email and SMS campaigns that feel personal, even when automated.</p>
+                </div>
+                
+                <!-- Feature 5 -->
+                <div class="bg-white p-6 rounded-lg shadow-sm card-hover">
+                    <div class="w-12 h-12 bg-primary-50 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-chart-line text-primary-600 text-xl"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-2">Market Analytics</h3>
+                    <p class="text-gray-600">Get real-time market insights and automated comparative market analyses for any property.</p>
+                </div>
+                
+                <!-- Feature 6 -->
+                <div class="bg-white p-6 rounded-lg shadow-sm card-hover">
+                    <div class="w-12 h-12 bg-primary-50 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-file-signature text-primary-600 text-xl"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-2">Digital Transaction Management</h3>
+                    <p class="text-gray-600">Complete transactions digitally with e-signatures, document tracking, and automated compliance checks.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Demo Video Section -->
+    <div class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">See ALTLY in Action</h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">Watch how our platform can transform your real estate business in just 2 minutes.</p>
+            </div>
+            
+            <div class="aspect-w-16 aspect-h-9 bg-gray-200 rounded-xl overflow-hidden shadow-lg max-w-4xl mx-auto">
+                <div class="w-full h-full flex items-center justify-center bg-gradient-to-br from-primary-500 to-secondary-500">
+                    <i class="fas fa-play text-white text-5xl"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Testimonials Section -->
+    <div id="testimonials" class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">What Realtors Are Saying</h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">Join hundreds of real estate professionals who have transformed their business with ALTLY.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="testimonial-card p-6 rounded-lg">
+                    <div class="flex items-center mb-4">
+                        <img class="w-12 h-12 rounded-full object-cover" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="Sarah Johnson">
+                        <div class="ml-4">
+                            <h4 class="font-semibold text-gray-900">Sarah Johnson</h4>
+                            <p class="text-gray-600">Top Producer, Century 21</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 italic">"ALTLY has completely transformed my lead follow-up process. I'm closing 40% more deals with half the effort. The automated nurturing sequences are worth the price alone."</p>
+                    <div class="mt-4 flex text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 2 -->
+                <div class="testimonial-card p-6 rounded-lg">
+                    <div class="flex items-center mb-4">
+                        <img class="w-12 h-12 rounded-full object-cover" src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="Michael Chen">
+                        <div class="ml-4">
+                            <h4 class="font-semibold text-gray-900">Michael Chen</h4>
+                            <p class="text-gray-600">Broker/Owner, Chen Realty Group</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 italic">"The property matching algorithm is scarily accurate. My clients are amazed at how quickly we find their perfect home. It's like having a superpower in this competitive market."</p>
+                    <div class="mt-4 flex text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 3 -->
+                <div class="testimonial-card p-6 rounded-lg">
+                    <div class="flex items-center mb-4">
+                        <img class="w-12 h-12 rounded-full object-cover" src="https://images.unsplash.com/photo-1566492031773-4f4e44671857?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="David Rodriguez">
+                        <div class="ml-4">
+                            <h4 class="font-semibold text-gray-900">David Rodriguez</h4>
+                            <p class="text-gray-600">Team Lead, Keller Williams</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 italic">"Our team's productivity has skyrocketed since implementing ALTLY. The transaction management tools alone save us 10+ hours per deal. This is the future of real estate."</p>
+                    <div class="mt-4 flex text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pricing Section -->
+    <div id="pricing" class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Simple, Transparent Pricing</h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">No hidden fees. Cancel anytime. All plans include a 14-day free trial.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                <!-- Basic Plan -->
+                <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
+                    <h3 class="text-lg font-semibold text-gray-900 mb-2">Starter</h3>
+                    <p class="text-gray-600 mb-4">For individual agents</p>
+                    <div class="mb-6">
+                        <span class="text-4xl font-bold text-gray-900">$49</span>
+                        <span class="text-gray-600">/month</span>
+                    </div>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center">
+                            <svg class="h-5 w-5 text-primary-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span>Up to 50 leads/month</span>
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="h-5 w-5 text-primary-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span>Basic lead nurturing</span>
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="h-5 w-5 text-primary-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span>Property matching</span>
+                        </li>
+                        <li class="flex items-center text-gray-400">
+                            <svg class="h-5 w-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                            </svg>
+                            <span>Team features</span>
+                        </li>
+                    </ul>
+                    <a href="#contact" class="block w-full bg-gray-100 hover:bg-gray-200 text-gray-800 font-medium py-2 px-4 rounded-md text-center transition">Get Started</a>
+                </div>
+                
+                <!-- Professional Plan -->
+                <div class="bg-white p-6 rounded-lg shadow-md border-2 border-primary-500 relative">
+                    <div class="absolute top-0 right-0 bg-primary-600 text-white text-xs font-semibold px-3 py-1 rounded-bl-lg rounded-tr-lg">MOST POPULAR</div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-2">Professional</h3>
+                    <p class="text-gray-600 mb-4">For serious agents & small teams</p>
+                    <div class="mb-6">
+                        <span class="text-4xl font-bold text-gray-900">$99</span>
+                        <span class="text-gray-600">/month</span>
+                    </div>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center">
+                            <svg class="h-5 w-5 text-primary-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span>Up to 200 leads/month</span>
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="h-5 w-5 text-primary-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span>Advanced lead nurturing</span>
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="h-5 w-5 text-primary-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span>Automated campaigns</span>
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="h-5 w-5 text-primary-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span>Basic team features</span>
+                        </li>
+                    </ul>
+                    <a href="#contact" class="block w-full bg-primary-600 hover:bg-primary-700 text-white font-medium py-2 px-4 rounded-md text-center transition">Get Started</a>
+                </div>
+                
+                <!-- Enterprise Plan -->
+                <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
+                    <h3 class="text-lg font-semibold text-gray-900 mb-2">Enterprise</h3>
+                    <p class="text-gray-600 mb-4">For teams & brokerages</p>
+                    <div class="mb-6">
+                        <span class="text-4xl font-bold text-gray-900">$249</span>
+                        <span class="text-gray-600">/month</span>
+                    </div>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center">
+                            <svg class="h-5 w-5 text-primary-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span>Unlimited leads</span>
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="h-5 w-5 text-primary-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span>Premium lead nurturing</span>
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="h-5 w-5 text-primary-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span>Full campaign suite</span>
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="h-5 w-5 text-primary-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span>Advanced team management</span>
+                        </li>
+                    </ul>
+                    <a href="#contact" class="block w-full bg-gray-100 hover:bg-gray-200 text-gray-800 font-medium py-2 px-4 rounded-md text-center transition">Contact Sales</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FAQ Section -->
+    <div id="faq" class="py-16 bg-gray-50">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Frequently Asked Questions</h2>
+                <p class="text-lg text-gray-600">Everything you need to know about ALTLY.</p>
+            </div>
+            
+            <div class="space-y-4">
+                <!-- FAQ 1 -->
+                <div class="faq-item">
+                    <div class="faq-question py-4 flex justify-between items-center" onclick="toggleFAQ(1)">
+                        <h3 class="font-medium text-gray-900">How does the free trial work?</h3>
+                        <svg class="h-5 w-5 text-gray-500 transform transition-transform" id="faq-icon-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </div>
+                    <div class="faq-answer pb-4" id="faq-answer-1">
+                        <p class="text-gray-600">Our 14-day free trial gives you full access to all features of the Professional plan. No credit card is required to start. At the end of the trial period, you can choose to continue with any of our paid plans or cancel with no obligation.</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ 2 -->
+                <div class="faq-item">
+                    <div class="faq-question py-4 flex justify-between items-center" onclick="toggleFAQ(2)">
+                        <h3 class="font-medium text-gray-900">Can I integrate with my existing CRM?</h3>
+                        <svg class="h-5 w-5 text-gray-500 transform transition-transform" id="faq-icon-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </div>
+                    <div class="faq-answer pb-4" id="faq-answer-2">
+                        <p class="text-gray-600">Yes! ALTLY integrates seamlessly with most major real estate CRMs including Salesforce, Follow Up Boss, LionDesk, and more. Our implementation team will help you set up the integration during onboarding.</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ 3 -->
+                <div class="faq-item">
+                    <div class="faq-question py-4 flex justify-between items-center" onclick="toggleFAQ(3)">
+                        <h3 class="font-medium text-gray-900">Is there a long-term contract?</h3>
+                        <svg class="h-5 w-5 text-gray-500 transform transition-transform" id="faq-icon-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </div>
+                    <div class="faq-answer pb-4" id="faq-answer-3">
+                        <p class="text-gray-600">No. ALTLY is month-to-month with no long-term contracts. You can cancel anytime with just a few clicks. We're confident you'll love our platform, but we don't believe in locking you in.</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ 4 -->
+                <div class="faq-item">
+                    <div class="faq-question py-4 flex justify-between items-center" onclick="toggleFAQ(4)">
+                        <h3 class="font-medium text-gray-900">How secure is my client data?</h3>
+                        <svg class="h-5 w-5 text-gray-500 transform transition-transform" id="faq-icon-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </div>
+                    <div class="faq-answer pb-4" id="faq-answer-4">
+                        <p class="text-gray-600">Client data security is our top priority. We use bank-level encryption (AES-256) for all data at rest and in transit. We're SOC 2 Type II compliant and undergo regular third-party security audits. Your data is always yours and is never sold or shared.</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ 5 -->
+                <div class="faq-item">
+                    <div class="faq-question py-4 flex justify-between items-center" onclick="toggleFAQ(5)">
+                        <h3 class="font-medium text-gray-900">What kind of support is included?</h3>
+                        <svg class="h-5 w-5 text-gray-500 transform transition-transform" id="faq-icon-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </div>
+                    <div class="faq-answer pb-4" id="faq-answer-5">
+                        <p class="text-gray-600">All plans include email support with a 24-hour response time (Mon-Fri). Professional and Enterprise plans include priority phone support during business hours. We also offer comprehensive onboarding and training for all new customers.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CTA Section -->
+    <div class="bg-primary-700">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
+            <div class="text-center">
+                <h2 class="text-3xl font-bold text-white mb-4">Ready to Transform Your Real Estate Business?</h2>
+                <p class="text-xl text-primary-100 max-w-3xl mx-auto mb-8">Join thousands of top-performing agents who are closing more deals with less effort.</p>
+                <div class="flex flex-col sm:flex-row justify-center gap-4">
+                    <a href="#contact" class="bg-white hover:bg-gray-100 text-primary-700 font-medium py-3 px-8 rounded-md transition duration-300">Start Free Trial</a>
+                    <a href="#contact" class="bg-transparent hover:bg-primary-600 text-white font-medium py-3 px-8 rounded-md border border-white transition duration-300">Schedule Demo</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Section -->
+    <div id="contact" class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="lg:grid lg:grid-cols-2 lg:gap-8">
+                <div class="mb-12 lg:mb-0">
+                    <h2 class="text-3xl font-bold text-gray-900 mb-4">Get in Touch</h2>
+                    <p class="text-lg text-gray-600 mb-8">Have questions about how ALTLY can work for your business? Our team is ready to help.</p>
+                    
+                    <div class="space-y-6">
+                        <div class="flex">
+                            <div class="flex-shrink-0 bg-primary-50 rounded-full p-3">
+                                <svg class="h-6 w-6 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+                                </svg>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="text-lg font-medium text-gray-900">Sales</h3>
+                                <p class="text-gray-600">(800) 555-0192</p>
+                                <p class="text-sm text-gray-500">Mon-Fri, 9am-6pm EST</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex">
+                            <div class="flex-shrink-0 bg-primary-50 rounded-full p-3">
+                                <svg class="h-6 w-6 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                                </svg>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="text-lg font-medium text-gray-900">Email</h3>
+                                <p class="text-gray-600">hello@altly.com</p>
+                                <p class="text-sm text-gray-500">We respond within 24 hours</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex">
+                            <div class="flex-shrink-0 bg-primary-50 rounded-full p-3">
+                                <svg class="h-6 w-6 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z"></path>
+                                </svg>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="text-lg font-medium text-gray-900">Support</h3>
+                                <p class="text-gray-600">support@altly.com</p>
+                                <p class="text-sm text-gray-500">24/7 for critical issues</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-sm">
+                    <h3 class="text-xl font-semibold text-gray-900 mb-6">Send us a message</h3>
+                    <form>
+                        <div class="mb-4">
+                            <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Name</label>
+                            <input type="text" id="name" name="name" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-primary-500 focus:border-primary-500" required>
+                        </div>
+                        <div class="mb-4">
+                            <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                            <input type="email" id="email" name="email" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-primary-500 focus:border-primary-500" required>
+                        </div>
+                        <div class="mb-4">
+                            <label for="company" class="block text-sm font-medium text-gray-700 mb-1">Company</label>
+                            <input type="text" id="company" name="company" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-primary-500 focus:border-primary-500">
+                        </div>
+                        <div class="mb-4">
+                            <label for="message" class="block text-sm font-medium text-gray-700 mb-1">Message</label>
+                            <textarea id="message" name="message" rows="4" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-primary-500 focus:border-primary-500" required></textarea>
+                        </div>
+                        <div class="flex items-center mb-4">
+                            <input id="agree" name="agree" type="checkbox" class="h-4 w-4 text-primary-600 focus:ring-primary-500 border-gray-300 rounded" required>
+                            <label for="agree" class="ml-2 block text-sm text-gray-700">
+                                I agree to ALTLY's <a href="#" class="text-primary-600 hover:underline">Privacy Policy</a>
+                            </label>
+                        </div>
+                        <button type="submit" class="w-full bg-primary-600 hover:bg-primary-700 text-white font-medium py-2 px-4 rounded-md transition">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-sm font-semibold uppercase tracking-wider mb-4">Product</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">Features</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Pricing</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">API</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Integrations</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-sm font-semibold uppercase tracking-wider mb-4">Resources</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">Documentation</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Guides</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Blog</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Webinars</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-sm font-semibold uppercase tracking-wider mb-4">Company</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">About</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Careers</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Privacy</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Terms</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-sm font-semibold uppercase tracking-wider mb-4">Connect</h3>
+                    <div class="flex space-x-4 mb-4">
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                    <p class="text-gray-400 text-sm">Subscribe to our newsletter</p>
+                    <form class="mt-2 flex">
+                        <input type="email" placeholder="Your email" class="px-3 py-2 text-gray-900 rounded-l-md w-full max-w-xs">
+                        <button type="submit" class="bg-primary-600 hover:bg-primary-700 px-4 py-2 rounded-r-md">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            <div class="mt-12 pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center">
+                <div class="flex items-center">
+                    <svg class="h-8 w-8 text-primary-500" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 1L3 5v12l9 4 9-4V5l-9-4z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M3 5l9 4 9-4M12 17V5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <span class="ml-2 text-xl font-bold">ALTLY</span>
+                </div>
+                <p class="mt-4 md:mt-0 text-gray-400 text-sm">© 2025 ALTLY, Inc. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+
+        // FAQ toggle functionality
+        function toggleFAQ(index) {
+            const answer = document.getElementById(`faq-answer-${index}`);
+            const icon = document.getElementById(`faq-icon-${index}`);
+            
+            answer.classList.toggle('active');
+            icon.classList.toggle('rotate-180');
+        }
+
+        // Form submission
+        const contactForm = document.querySelector('form');
+        if (contactForm) {
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('Thank you for your message! We will get back to you soon.');
+                this.reset();
+            });
+        }
+    </script>
+</body>
+</html>
